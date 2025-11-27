@@ -1,155 +1,210 @@
-# Ola_October_Data_Analytics_Project
-End-to-end data analytics project using Ola’s October ride data (100k+ rows). Includes data cleaning, MySQL analysis, and an interactive Power BI dashboard uncovering booking trends, cancellations, revenue, and performance metrics.
+# Ola October Data Analytics Project – README
 
-Ola October Data Analytics Project – README
-📌 Overview
+## 📌 Overview
 
-This project analyzes Ola’s October month ride data containing 100,000+ rows. The objective was to clean the raw dataset, load it into a relational database (MySQL), perform analytical SQL queries, and finally build an interactive Power BI dashboard that highlights key operational and customer insights.
+This project analyzes Ola’s October month ride data, containing 100,000+ rows, to uncover operational patterns, revenue trends, vehicle performance, and cancellation behavior.
+The workflow includes data cleaning, SQL-based analysis, and building a multi-page Power BI dashboard that gives a complete view of Ola’s performance for the month.
 
-The project demonstrates end-to-end data analytics skills, including data cleaning, data modeling, SQL querying, visualization, and business insight generation.
+## 📂 Dataset
 
-📂 Dataset
+Rows: 103,024
 
-File: Ola October Dataset (Excel)
+Columns include: Booking ID, Ride Date, Ride Distance, Booking Status, Payment Method, Vehicle Type, Customer & Driver Ratings, Cancellation Reasons, Revenue.
 
-Rows: 100,000+
+**Cleaning Performed:**
 
-Data Includes:
+- Removed duplicates
 
-Booking ID
+- Standardized inconsistent labels
 
-Customer & Driver IDs
+- Fixed missing values
 
-Ride distance, timing, status
+- Cleaned datetime formats
 
-Vehicle type
+- Exported final dataset for SQL ingestion
 
-Payment method
+## 🛠 Tools Used
 
-Driver & customer ratings
+Excel / Power Query → Data Cleaning
 
-Cancellation details
+MySQL Workbench → Storing data, Creating Views & Running Queries
 
-Revenue (Booking_Value)
+Power BI → Dashboard creation, modeling, DAX
 
-Cleaning Performed
+GitHub → Documentation & project versioning
 
-Removed 1000+ duplicate records
+## 🧠 SQL Analysis Performed
 
-Fixed inconsistent labels (e.g., “Success”, “Canceled by Customer”)
+SQL queries (stored as views) include:
 
-Filled missing values where feasible
+✔ Successful bookings
+✔ Avg ride distance per vehicle type
+✔ Customer cancellation analysis
+✔ Top 5 customers by number of bookings
+✔ Driver cancellation due to personal/car issues
+✔ Driver rating extremes (Prime Sedan)
+✔ UPI payment-based rides
+✔ Avg customer rating by vehicle type
+✔ Total value of successful rides
+✔ Incomplete ride reasons
 
-Standardized datetime and categorical formats
+## 📊 Power BI Dashboard Overview
 
-Exported cleaned dataset for SQL ingestion
+Dashboard contains five analytical pages:
 
-🛠 Tools Used
+- Overall Performance
 
-Excel / Power Query → Data cleaning
+- Vehicle Type Analysis
 
-MySQL Workbench → Data loading & SQL analytics
+- Revenue Analytics
 
-Power BI → Dashboard and DAX Measures
+- Cancellation Insights
 
-GitHub → Project hosting & documentation
+- Ratings 
 
-🧠 SQL Analysis Performed
+### 1️⃣ Overall Performance Page
+**KPIs**
 
-Your SQL file includes multiple analytical views. Here are the key insights extracted:
+- Total Bookings: 103,024
 
-✔ 1. Successful Bookings
+- Total Booking Value: 35M
 
-Created view to filter only successful rides.
+- Date Range Used: 01 Oct 2025 – 31 Oct 2025
 
-✔ 2. Average Ride Distance by Vehicle Type
+- Ride Volume Over Time
 
-Ranks ride distance patterns across Prime Sedan, Auto, Mini, etc.
+- Shows day-wise ride count, with values generally between 3,100–3,400 rides/day.
 
-✔ 3. Customer Cancellations
+**Booking Status Breakdown**
 
-Count of all "Canceled by Customer" rides.
+- Success: 62.09%
 
-✔ 4. Top 5 High-Frequency Customers
+- Canceled by Driver: 17.89%
 
-Identifies customers with the highest number of bookings.
+- Canceled by Customer: 10.19%
 
-✔ 5. Driver Cancellations (Personal/Car Issues)
+- Driver Not Found: 9.83%
 
-Counts cancellations caused by the driver for internal reasons.
+This page gives a complete at-a-glance view of operational performance.
 
-✔ 6. Driver Rating Range for Prime Sedan
+### 2️⃣ Vehicle Type Performance Page
 
-Max/min driver ratings specifically for Prime Sedan vehicle type.
+Shows detailed metrics for each vehicle category:
 
-✔ 7. UPI-Based Payments
+| Vehicle Type | Total Booking Value | Successful Value | Avg Distance | Total Distance |
+|--------------|---------------------|------------------|--------------|----------------|
+| Prime Sedan  | 8.30M               | 5.22M            | 25.01 km     | 235K km        |
+| Prime SUV    | 7.93M               | 4.88M            | 24.88 km     | 224K km        |
+| Prime Plus   | 8.05M               | 5.02M            | 25.03 km     | 227K km        |
+| Mini         | 7.99M               | 4.89M            | 24.98 km     | 226K km        |
+| Auto         | 8.09M               | 5.05M            | 10.04 km     | 92K km         |
+| Bike         | 16.29M              | 4.97M            | 24.93 km     | 228K km        |
+| E-Bike       | 8.18M               | 5.05M            | 25.15 km     | 231K km        |
 
-Filters all bookings paid using UPI.
+**Key Observations**
 
-✔ 8. Average Customer Rating by Vehicle Type
+- Bikes generated the highest total booking value.
 
-Shows which vehicle types deliver better customer experience.
+- Prime Plus has the highest average ride distance (25.03 km).
 
-✔ 9. Total Value of Successful Rides
+- Autos have much lower average distance, indicating hyperlocal rides.
 
-Sum of revenue generated from successfully completed rides.
+### 3️⃣ Revenue Analytics Page
+**Revenue by Payment Method**
 
-✔ 10. Incomplete Rides & Reasons
+- Cash: Highest revenue contributor (~20M)
 
-Extracts ride IDs and reasons for non-completion.
+- UPI: Second highest (~14M)
 
-📊 Power BI Dashboard
+- Credit & Debit Cards: Minimal usage
 
-The dashboard visually represents all major metrics from the SQL analysis.
+**Top 5 Customers (by booking value)**
 
-Dashboard Highlights
+- CID785112 – 8025
 
-KPIs:
+- CID308763 – 6281
 
-Total Rides
+- CID734557 – 6177
 
-Successful Rides
+- CID353074 – 6110
 
-Cancellation Rate
+- CID836942 – 6019
 
-Revenue from Successful Rides
+**Daily Ride Distance Trend**
 
-Ride Trends:
+Shows consistent daily distance values between 40K–55K km/day.
 
-Hourly and daily ride frequency
+### 4️⃣ Cancellation Insights Page
+**KPIs**
 
-Peak booking hours
+- Total Bookings: 103,024
 
-Cancellation Analytics:
+- Successful: 63,967
 
-Customer vs Driver cancellation reasons
+- Cancelled: 28,933
 
-Vehicle Performance:
+- Cancellation Rate: 28.08%
 
-Avg distance
+**Cancelled Rides by Customers**
 
-Avg customer rating
+**Major reasons:**
 
-Avg driver rating
+- Driver is not moving toward pickup – 30.24%
 
-Geographical & Payment Insights
+- Change of plans – 19.82%
 
-Customer & Driver Behavior Patterns
+- Driver asked to cancel – 25.43%
 
-This dashboard helps stakeholders quickly understand overall performance for the month.
+- Wrong Address – 9.57%
 
-📈 Key Results & Insights
+- AC not working – 14.93%
 
-(Add your actual numbers from Power BI once ready. For now, generic placeholders are written.)
+**Cancelled Rides by Drivers**
 
-Prime Sedan showed the highest average customer rating.
+**Major reasons:**
 
-Customer cancellations were higher than driver cancellations.
+- Personal & Car issues – 35.49%
 
-The majority of successful payments were made via UPI.
+- Customer-related issue – 29.36%
 
-Top 5 customers contributed significantly to the month’s bookings.
+- More than permitted persons – 15.32%
 
-Most incomplete rides were due to internet connectivity or user-related issues.
+- Customer was coughing – 19.82%
 
-Ride volume was highest between 8–10 AM and 6–9 PM.
+This page clearly highlights the root causes behind cancellations, helping improve operations.
+
+## 5️⃣ Ratings Page
+
+**Customer Ratings**
+
+- Prime Plus customers received the highest rating (4.01).
+
+- Bike and E-Bike riders received the lowest ratings (3.99), though still very close to the baseline.
+
+- All customer ratings fall within a tight band (3.99–4.01), showing generally positive rider behavior.
+
+- The consistency between driver ratings and customer ratings suggests mutual reliability and good ride interactions across categories.
+  
+**Driver Ratings**
+
+- Prime SUV and E-Bike drivers hold the highest ratings (4.01), showing strong customer satisfaction.
+
+- Bike drivers received the lowest average rating (3.98), though the variation across segments is minimal.
+
+- Sedan, Mini, Auto, and Prime Plus all hover around 4.0, indicating consistent service quality across car-based categories.
+
+- The narrow rating range (3.98–4.01) suggests uniform driver performance across fleet types.
+
+## 📈 Key Insights Summarized
+
+- 28.08% cancellation rate — significant opportunity for operational improvement.
+
+- Cash payments dominate, suggesting digital adoption can be improved.
+
+- Prime Sedan, Prime Plus, and SUVs show long-distance trips (25+ km).
+
+- Bike rides generate maximum revenue, likely due to high frequency.
+
+- Major customer cancellation reason: driver not moving toward pickup.
+
+- Major driver cancellation reason: personal & car issues
